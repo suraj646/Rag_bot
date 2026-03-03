@@ -21,7 +21,7 @@ hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 _THREAD_RETRIEVERS: Dict[str, Any] = {}
 _THREAD_METADATA: Dict[str, dict] = {}
 embeddings=HuggingFaceEndpointEmbeddings(
-    repo_id='sentence-transformers/all-MiniLM-L6-v2'
+    repo_id='sentence-transformers/all-MiniLM-L6-v2',
     huggingfacehub_api_token=hf_token
 )
 
@@ -213,5 +213,6 @@ def thread_has_document(thread_id: str) -> bool:
 
 def thread_document_metadata(thread_id: str) -> dict:
     return _THREAD_METADATA.get(str(thread_id), {})
+
 
 
