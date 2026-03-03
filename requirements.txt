@@ -1,0 +1,17 @@
+langgraph
+langgraph-checkpoint-sqlite
+langchain
+langchain_community
+dotenv
+langchain_huggingface
+streamlit
+sentence-transformers
+faiss-cpu
+pypdf
+streamlit
+requests
+typing-extensions
+ddgs
+langchain_text_splitters
+duckduckgo-search
+pysqlite3-binary
