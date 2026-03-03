@@ -13,7 +13,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from typing import Annotated, Any, Dict, Optional, TypedDict
 import sqlite3,requests,os,tempfile
-inport streamlit as st
+import streamlit as st
 
 load_dotenv()
 hf_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
@@ -22,7 +22,7 @@ _THREAD_RETRIEVERS: Dict[str, Any] = {}
 _THREAD_METADATA: Dict[str, dict] = {}
 embeddings=HuggingFaceEndpointEmbeddings(
     repo_id='sentence-transformers/all-MiniLM-L6-v2',
-    huggingfacehub_api_token=hf_token
+    huggingfacehub_api_token=hf_token,
 )
 
 def _get_retriever(thread_id: Optional[str]):
@@ -93,8 +93,8 @@ class state(TypedDict):
 
 llm=HuggingFaceEndpoint(
     repo_id="openai/gpt-oss-20b",
+    huggingfacehub_api_token=hf_token,
     task="text generation",
-    huggingfacehub_api_token=hf_token
 )
 model=ChatHuggingFace(llm=llm)
 #---------------------------------------------------------------------------------------
@@ -213,6 +213,7 @@ def thread_has_document(thread_id: str) -> bool:
 
 def thread_document_metadata(thread_id: str) -> dict:
     return _THREAD_METADATA.get(str(thread_id), {})
+
 
 
 
